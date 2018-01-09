@@ -556,9 +556,10 @@ roles:
       public: true
     - name: tcp-routing
       protocol: TCP
-      external: 20000-20008
-      internal: 20000-20008
+      external: RESERVABLE_PORTS
+      internal: RESERVABLE_PORTS
       public: true
+      user-configurable: true
     healthcheck:
       readiness:
         url: http://container-ip/health
@@ -2095,7 +2096,7 @@ configuration:
     required: true
   - name: RESERVABLE_PORTS
     default: 20000-20008
-    description: Modifying this value will break TCP port forwarding.
+    description: The range of ports available to TCP port forwarding.
     required: true
   - name: ROOTFS_TRUSTED_CERTS
     default: ''
